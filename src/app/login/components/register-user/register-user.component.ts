@@ -16,7 +16,7 @@ export class RegisterUserComponent implements OnInit {
   public zenrePreference: Array<any> = [];
   public productionHousePreference: Array<any> = [];
   public dropdownSettings: any = {};
- 
+
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
 
@@ -25,36 +25,36 @@ export class RegisterUserComponent implements OnInit {
     this.getLanguageList();
   }
 
-  public initForm(){
-     this.form = this.formBuilder.group({
-       name: ['', [Validators.required]],
-       email: ['', [Validators.required, Validators.email]],
-       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
-       confirmPassword: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
-       languagePreference: [],
-       production: [],
-       genre: []
-     });
-     this.validateConfirmPassword();     
+  public initForm() {
+    this.form = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
+      languagePreference: [],
+      production: [],
+      genre: []
+    });
+    this.validateConfirmPassword();
   }
 
-  public submit(){
+  public submit() {
     const requestBody = new User(this.form.value);
-    this.userService.doRegister(requestBody).subscribe((resp)=>{
-           console.log(resp);
-           if(resp.statusCode === true){
-             alert("Registration Successful!");
-            this.redirectToLogin();
-           } else {
-             alert(resp.message);
-           }
-           
+    this.userService.doRegister(requestBody).subscribe((resp) => {
+      console.log(resp);
+      if (resp.statusCode === true) {
+        alert("Registration Successful!");
+        this.redirectToLogin();
+      } else {
+        alert(resp.message);
+      }
+
     }, error => {
       console.log(error);
     });
   }
 
-  public validateConfirmPassword(){
+  public validateConfirmPassword() {
     this.form.valueChanges.subscribe(field => {
       if (field.password !== field.confirmPassword) {
         this.form.controls['confirmPassword'].setErrors({ mismatch: true });
@@ -64,43 +64,40 @@ export class RegisterUserComponent implements OnInit {
     });
   }
 
-  public redirectToLogin(){
+  public redirectToLogin() {
     this.router.navigate(['']);
   }
 
- public getLanguageList(){
+  public getLanguageList() {
 
-   this.userService.getPrefferedList().subscribe((response: any)=>{
-       console.log(response);
-       this.languagePreference = response.spoken_languages;
-       this.zenrePreference = response.genres;
-       this.productionHousePreference = response.production_companies;
-   });
-   
- }
+    this.userService.getPrefferedList().subscribe((response: any) => {
+      console.log(response);
+      this.languagePreference = response.spoken_languages;
+      this.zenrePreference = response.genres;
+      this.productionHousePreference = response.production_companies;
+    });
 
- public getZenreList(){
-   
-}
+  }
 
-public getProductionList(){
-   
-}
+  public getZenreList() {
 
-public setDropDownSetting(textValue: string): object{
-  return { 
-    singleSelection: false, 
-    text: textValue,
-    selectAllText:'Select All',
-    unSelectAllText:'UnSelect All',
-    lazyLoading : true,
-    enableSearchFilter: true,
-    classes:"myclass custom-class"
-  };
-}
+  }
 
+  public getProductionList() {
 
+  }
 
+  public setDropDownSetting(textValue: string): object {
+    return {
+      singleSelection: false,
+      text: textValue,
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      lazyLoading: true,
+      enableSearchFilter: true,
+      classes: "myclass custom-class"
+    };
+  }
 
 
 }
