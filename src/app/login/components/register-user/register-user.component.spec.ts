@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 
 import { RegisterUserComponent } from './register-user.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserService } from '../../services/user.service';
 import { Observable, of } from 'rxjs';
@@ -25,9 +25,9 @@ describe('RegisterUserComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [RegisterUserComponent],
-      imports: [ReactiveFormsModule, HttpClientModule, RouterTestingModule],
+      imports: [ReactiveFormsModule, HttpClientModule, RouterTestingModule, FormsModule],
       providers: [{ provide: UserService, useClass: MockUserService }]
-    })
+    }).overrideTemplate(RegisterUserComponent, "<div></div>")
       .compileComponents();
   }));
 
