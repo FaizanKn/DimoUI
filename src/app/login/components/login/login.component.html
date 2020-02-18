@@ -1,11 +1,11 @@
 <form class="form-signin">
   <img class="mb-4" src="../../../../assets/Dimo Logo with a dot.png" alt="" width="200">
   <label for="exampleInputEmail1" class="sr-only">Email address</label>
-  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+  <input type="email" [ngModelOptions]="{standalone: true}" [(ngModel)]="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
     placeholder="Email address" required autofocus>
   <label for="exampleInputPassword1" class="sr-only">Password</label>
-  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  <input type="password" [ngModelOptions]="{standalone: true}" [(ngModel)]="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+  <button (click)="login()" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
   <div class="p-1">
     <a (click)="register()" href="javascript:void(0)">Not a user? Sign up</a>
     <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
