@@ -1,84 +1,115 @@
-
 <div class="container">
-    <div class="mt-5 row">
-        <div class="col-6 offset-2">
-            <form [formGroup]= "form" (submit)="submit()">
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
-                    <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)"
-                    class="alert alert-danger">
-                       <div *ngIf="form.controls['name'].hasError('required') ">
-                             Name is required
-                       </div>
-                 </div>   
-                  </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="email"> 
-                  
-                  <div *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)"
-                  class="alert alert-danger">
-                     <div *ngIf="form.controls['email'].hasError('required') ">
-                           Email is required
-                     </div>
-                     <div *ngIf="form.controls['email'].hasError('email') ">
-                      Enetred value is not a valid email
-                   </div>
-               </div>   
-
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="password">
-                  <small id="emailHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
-                   
-                  <div *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)"
-                  class="alert alert-danger">
-                     <div *ngIf="form.controls['password'].hasError('required') ">
-                           Password is required
-                     </div>
-
-                     <div *ngIf="form.controls['password'].hasError('maxlength') ">
-                       Password cannot exceeds more than 12 characters
-                </div>
-
-                <div *ngIf="form.controls['password'].hasError('minlength') ">
-                     Password should be at least 6 characters long
+  <div class="mt-5 row">
+    <div class="col-6 offset-2">
+      <form [formGroup]="form" (submit)="submit()">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+          <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="form.controls['name'].hasError('required') ">
+              Name is required
             </div>
-               </div>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Confirm Password</label>
-                    <input type="password" class="form-control" id="exampleConfirmPassword1" placeholder="Confirm Password" formControlName="confirmPassword">
-
-                    <div *ngIf="form.controls['confirmPassword'].invalid && (form.controls['confirmPassword'].dirty || form.controls['confirmPassword'].touched)"
-                    class="alert alert-danger">
-                       <div *ngIf="form.controls['confirmPassword'].hasError('required') ">
-                             Password is required
-                       </div>
-  
-                       <div *ngIf="form.controls['confirmPassword'].hasError('maxlength') ">
-                         Password cannot exceeds more than 12 characters
-                  </div>
-  
-                  <div *ngIf="form.controls['confirmPassword'].hasError('minlength') ">
-                       Password should be at least 6 characters long
-              </div>
-
-              <div *ngIf="form.controls['confirmPassword'].hasError('mismatch') ">
-                  Confirm Password should match to password
-               </div>
-
-                 </div>
-
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Select Preferences</label>
-                    <input type="checkbox" id=""/>
-                  </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
+          </div>
         </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Enter email" formControlName="email">
+
+          <div
+            *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="form.controls['email'].hasError('required') ">
+              Email is required
+            </div>
+            <div *ngIf="form.controls['email'].hasError('email') ">
+              Enetred value is not a valid email
+            </div>
+          </div>
+
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+            formControlName="password">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
+
+          <div
+            *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="form.controls['password'].hasError('required') ">
+              Password is required
+            </div>
+
+            <div *ngIf="form.controls['password'].hasError('maxlength') ">
+              Password cannot exceeds more than 12 characters
+            </div>
+
+            <div *ngIf="form.controls['password'].hasError('minlength') ">
+              Password should be at least 6 characters long
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Confirm Password</label>
+          <input type="password" class="form-control" id="exampleConfirmPassword1" placeholder="Confirm Password"
+            formControlName="confirmPassword">
+
+          <div
+            *ngIf="form.controls['confirmPassword'].invalid && (form.controls['confirmPassword'].dirty || form.controls['confirmPassword'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="form.controls['confirmPassword'].hasError('required') ">
+              Password is required
+            </div>
+
+            <div *ngIf="form.controls['confirmPassword'].hasError('maxlength') ">
+              Password cannot exceeds more than 12 characters
+            </div>
+
+            <div *ngIf="form.controls['confirmPassword'].hasError('minlength') ">
+              Password should be at least 6 characters long
+            </div>
+
+            <div *ngIf="form.controls['confirmPassword'].hasError('mismatch') ">
+              Confirm Password should match to password
+            </div>
+
+          </div>
+
+        </div>
+        
+        <div class="form-group">
+          <label for="name">Preferred languages</label> 
+         <angular2-multiselect [data]="languagePreference" 
+                                [settings]="setDropDownSetting('select Languages')" 
+                                formControlName="languagePreference">
+          </angular2-multiselect>
+      </div>
+
+      <div class="form-group">
+        <label for="genre">Preferred Genre</label>
+       <angular2-multiselect [data]="languagePreference" 
+                          [settings]="setDropDownSetting('select Genre')" 
+                          formControlName="genre"  
+                            >
+        </angular2-multiselect>
     </div>
+
+    <div class="form-group">
+      <label for="name">Preferred Production</label>
+     <angular2-multiselect [data]="languagePreference" 
+     [settings]="setDropDownSetting('select Production')" 
+     formControlName="production" 
+                          >
+      </angular2-multiselect>
+  </div>
+      
+        
+        
+        
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+      </form>
+    </div>
+  </div>
 </div>
