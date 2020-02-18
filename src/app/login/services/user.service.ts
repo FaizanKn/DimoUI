@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
     providedIn: 'root'
 })
-export class AuthService {
+export class UserService {
 
     private url: string = 'https://dimoapi.herokuapp.com/api/';
     constructor(private http: HttpClient) { }
