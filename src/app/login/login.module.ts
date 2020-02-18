@@ -6,6 +6,7 @@ import { RegisterUserComponent } from './components/register-user/register-user.
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
 @NgModule({
   declarations: [RegisterUserComponent, LoginComponent],
@@ -14,7 +15,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     LoginRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularMultiSelectModule
   ]
 })
 export class LoginModule { }
