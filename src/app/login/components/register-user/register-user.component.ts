@@ -77,9 +77,6 @@ export class RegisterUserComponent implements OnInit {
       this.productionHousePreference = response.production_companies;
     });
 
-  }
-
-  public getZenreList() {
 
   }
 
