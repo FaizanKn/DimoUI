@@ -39,11 +39,11 @@ export class RegisterUserComponent implements OnInit {
   }
 
   public submit(){
-    console.log(this.form.value);
     const requestBody = new User(this.form.value);
     this.userService.doRegister(requestBody).subscribe((resp)=>{
            console.log(resp);
            if(resp.statusCode === true){
+             alert("Registration Successful!");
             this.redirectToLogin();
            } else {
              alert(resp.message);
