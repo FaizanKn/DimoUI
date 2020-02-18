@@ -15,7 +15,7 @@
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-            placeholder="Enter email" formControlName="email">
+            placeholder="Email" formControlName="email">
 
           <div
             *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)"
@@ -89,7 +89,7 @@
 
       <div class="form-group">
         <label for="genre">Preferred Genre</label>
-       <angular2-multiselect [data]="languagePreference" 
+       <angular2-multiselect [data]="zenrePreference" 
                           [settings]="setDropDownSetting('select Genre')" 
                           formControlName="genre"  
                             >
@@ -98,7 +98,7 @@
 
     <div class="form-group">
       <label for="name">Preferred Production</label>
-     <angular2-multiselect [data]="languagePreference" 
+     <angular2-multiselect [data]="productionHousePreference" 
      [settings]="setDropDownSetting('select Production')" 
      formControlName="production" 
                           >
