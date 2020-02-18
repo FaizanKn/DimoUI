@@ -15,6 +15,9 @@ export class MockUserService {
   public doRegister(body: any): Observable<any> {
     return of({statusCode: true});
   }
+  public getPrefferedList(){
+    return of({});
+}
 }
 
 describe('RegisterUserComponent', () => {
@@ -109,6 +112,9 @@ describe('RegisterUserComponent', () => {
     component.form.controls["email"].setValue("test@gmail.com");
     component.form.controls["password"].setValue("TestPwd");
     component.form.controls["confirmPassword"].setValue("TestPwd");
+    component.form.controls["production"].setValue([]);
+    component.form.controls["genre"].setValue([]);
+    component.form.controls["languagePreference"].setValue([]);
   }
 
 });
