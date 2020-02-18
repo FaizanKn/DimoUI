@@ -2,7 +2,9 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
+const helmet = require('helmet')
 const app = express();
+app.use(helmet())
 const basePath = process.env.API_URL;
 app.use(express.json())
 
@@ -51,4 +53,4 @@ app.get('/*', function (req, res) {
 });
 
 // Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8090, () => console.log("Server started"));
+app.listen(process.env.PORT || 8090, () => console.log("Server started on port 8090"));
