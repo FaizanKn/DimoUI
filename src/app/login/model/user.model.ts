@@ -3,13 +3,13 @@ export class User {
     private name: string;
     private email: string;
     private password: string;
-    private prefernces: Array<string> = [];
+    private preferences: Array<string> = [];
 
     constructor(obj) {
       this.email = obj.email;
       this.name = obj.name;
       this.password = obj.password;
-      this.prefernces = this.setPreferenceLIst(obj);
+      this.preferences= this.setPreferenceLIst(obj);
     }
 
 
