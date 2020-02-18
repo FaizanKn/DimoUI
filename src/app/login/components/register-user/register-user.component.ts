@@ -55,7 +55,7 @@ export class RegisterUserComponent implements OnInit {
   }
 
   public redirectToLogin(){
-    this.router.navigate(['/login']);
+    this.router.navigate(['']);
   }
 
 }
