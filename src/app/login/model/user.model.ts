@@ -15,15 +15,15 @@ export class User {
 
     public setPreferenceLIst(obj) {
     const language =   obj.languagePreference.map((item) => {
-          return item.id;
+          return item.code;
       });
 
     const production =  obj.production.map((item) => {
-        return item.id;
+        return item.code;
     });
 
     const genre =  obj.genre.map((item) => {
-        return item.id;
+        return item.code;
     });
     return [].concat(language, production, genre);
     }

@@ -79,13 +79,6 @@ export class RegisterUserComponent implements OnInit {
    
  }
 
- public getZenreList(){
-   
-}
-
-public getProductionList(){
-   
-}
 
 public setDropDownSetting(textValue: string): object{
   return { 
