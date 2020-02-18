@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
       login(){
-        this.http.post("http://localhost:8080/api/login",{email: this.email, password:this.password})
+        this.http.post("/api/login",{email: this.email, password:this.password})
           .subscribe((result)=>{
             this.userService.loginSuccess(this.email);
             this.router.navigateByUrl('/dashboard');
