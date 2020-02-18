@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const axios = require('axios');
 const app = express();
-const basePath = "https://dimoapi.herokuapp.com";
+const basePath = process.env.API_URL;
 app.use(express.json())
 
 
@@ -25,7 +25,6 @@ app.get('/api/*', function (req, res) {
 app.post('/api/*', function (req, res) {
     const fullPath = `${basePath}${req.url}`;
     console.log("full path  ", fullPath);
-    console.log(req.body);
     axios.post(fullPath, req.body, {
         headers: {
             'content-type': 'application/json'
