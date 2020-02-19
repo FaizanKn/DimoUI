@@ -47,11 +47,11 @@ export class RegisterUserComponent implements OnInit {
         this.alertService.success("Registration Successful!");
         this.redirectToLogin();
       } else {
-        this.alertService.error(resp.message);
+        this.alertService.error(resp.message, {autoClose:true});
       }
 
     }, ({error}) => {
-      this.alertService.error(error.message);
+      this.alertService.error(error.message, {autoClose:true});
     });
   }
 
