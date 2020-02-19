@@ -38,16 +38,18 @@ export class RegisterUserComponent implements OnInit {
   public submit() {
     const requestBody = new User(this.form.value);
     this.userService.doRegister(requestBody).subscribe((resp) => {
-      console.log(resp);
-      if (resp.statusCode === true) {
+      if (resp.status == 200) {
         this.alertService.success("Registration Successful!");
-        this.redirectToLogin();
-      } else {
-        this.alertService.error(resp.message);
+        this.userService.loginSuccess(this.form.controls["email"].value);
+        this.redirectToDashboard();
+      } 
+    }, (error) => {
+      if(error.status == 400){
+        this.alertService.error("User Already Registered");
       }
-
-    }, ({error}) => {
-      this.alertService.error(error.message);
+      else{
+        this.alertService.error(error.message);
+      }      
     });
   }
 
@@ -65,8 +67,8 @@ export class RegisterUserComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  public getProductionList() {
-
+  public redirectToDashboard(){
+    this.router.navigateByUrl('/dashboard');
   }
 
   public setDropDownSetting(textValue: string): object {

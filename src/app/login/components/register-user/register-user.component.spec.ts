@@ -11,12 +11,14 @@ import { AlertModule } from './../../../shared/alert/alert.module';
 
 export class MockUserService {
   public doLogin(body: any): Observable<any> {
-    return of(true);
+    return of({status: 200});
   }
 
   public doRegister(body: any): Observable<any> {
-    return of({statusCode: true});
+    return of({status: 200});
   }
+  public loginSuccess(email: string){
+}
 
 }
 
@@ -69,21 +71,21 @@ describe('RegisterUserComponent', () => {
 
   describe("submit",()=>{
 
-    it("should redirect to login on successful user registration",fakeAsync(()=>{
+    it("should redirect to dashboard on successful user registration",fakeAsync(()=>{
       setFormValues();
-      spyOn(component,"redirectToLogin");
+      spyOn(component,"redirectToDashboard");
       component.submit();
       tick();
-      expect(component.redirectToLogin).toHaveBeenCalled();
+      expect(component.redirectToDashboard).toHaveBeenCalled();
     }));
 
-    it("should not redirect to login on unsuccessful user registration",fakeAsync(()=>{
+    it("should not redirect to dashboard on unsuccessful user registration",fakeAsync(()=>{
       setFormValues();    
-      spyOn(component,"redirectToLogin");
-      spyOn(userService,"doRegister").and.returnValue(of({statusCode: false}));
+      spyOn(component,"redirectToDashboard");
+      spyOn(userService,"doRegister").and.returnValue(of({status: 400}));
       component.submit();
       tick();
-      expect(component.redirectToLogin).not.toHaveBeenCalled();
+      expect(component.redirectToDashboard).not.toHaveBeenCalled();
     }));
 
   });
