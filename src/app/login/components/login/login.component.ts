@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from './../../services/user.service';
 import { AlertService } from "./../../../shared/alert/alert.service";
+import { environment } from "./../../../../environments/environment";
 
 @Component({
   selector: 'app-login',
@@ -31,17 +32,13 @@ export class LoginComponent implements OnInit {
                 this.alertService.error(error.message, {autoClose:true});
             });
         else{
-          if(this.isAlertBoxShown == false)
-            {
-              this.alertService.warn("Email Id and Password are required", {autoClose: true});
-
+            if(this.isAlertBoxShown == false){
               this.isAlertBoxShown = true;
-
-              setTimeout(()=>{
-                  this.isAlertBoxShown = false;
-              },3000);
+              this.alertService.warn("Email and Password is required.", {autoClose: true});
             }
-            
+            setTimeout(()=>{
+              this.isAlertBoxShown = false;
+            }, environment.alertShownTime);
         }
   }
 
