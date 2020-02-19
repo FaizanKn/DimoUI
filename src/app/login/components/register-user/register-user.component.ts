@@ -48,7 +48,7 @@ export class RegisterUserComponent implements OnInit {
         this.alertService.error("User Already Registered");
       }
       else{
-        this.alertService.error(error.message);
+        this.alertService.error("Error Occurred");
       }      
     });
   }
