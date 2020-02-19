@@ -39,11 +39,13 @@ export class RegisterUserComponent implements OnInit {
     const requestBody = new User(this.form.value);
     this.userService.doRegister(requestBody).subscribe((resp) => {
       if (resp.status == 200) {
-        this.alertService.success("Registration Successful!");
         this.userService.loginSuccess(this.form.controls["email"].value);
         this.redirectToDashboard();
-      } 
-    }, (error) => {
+      } else {
+        this.alertService.error(resp.message, {autoClose:true});
+      }
+
+    }, ({error}) => {
       if(error.status == 400){
         this.alertService.error("User Already Registered");
       }

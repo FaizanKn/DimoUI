@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from './../../services/user.service';
 import { AlertService } from "./../../../shared/alert/alert.service";
+import { environment } from "./../../../../environments/environment";
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   public email: string;
   public password: string;
+  public isAlertBoxShown: boolean = false;
 
   constructor(private router: Router, private http: HttpClient, private userService: UserService, private alertService: AlertService) { }
 
@@ -20,14 +22,24 @@ export class LoginComponent implements OnInit {
   }
 
       login(){
-        this.http.post("/api/login",{email: this.email, password:this.password})
-          .subscribe((result)=>{
-            this.userService.loginSuccess(this.email);
-            this.router.navigateByUrl('/dashboard');
-          },
-          ({error})=>{
-              this.alertService.error(error.message);
-          });
+        if(this.email && this.password)
+          this.http.post("/api/login",{email: this.email, password:this.password})
+            .subscribe((result)=>{
+              this.userService.loginSuccess(this.email);
+              this.router.navigateByUrl('/dashboard');
+            },
+            ({error})=>{
+                this.alertService.error(error.message, {autoClose:true});
+            });
+        else{
+            if(this.isAlertBoxShown == false){
+              this.isAlertBoxShown = true;
+              this.alertService.warn("Email and Password is required.", {autoClose: true});
+            }
+            setTimeout(()=>{
+              this.isAlertBoxShown = false;
+            }, environment.alertShownTime);
+        }
   }
 
   register(){
