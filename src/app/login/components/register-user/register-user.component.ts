@@ -23,7 +23,6 @@ export class RegisterUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.getLanguageList();
   }
 
   public initForm() {
@@ -32,9 +31,6 @@ export class RegisterUserComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
-      languagePreference: [],
-      production: [],
-      genre: []
     });
     this.validateConfirmPassword();
   }
@@ -42,16 +38,20 @@ export class RegisterUserComponent implements OnInit {
   public submit() {
     const requestBody = new User(this.form.value);
     this.userService.doRegister(requestBody).subscribe((resp) => {
-      console.log(resp);
-      if (resp.statusCode === true) {
-        this.alertService.success("Registration Successful!");
-        this.redirectToLogin();
+      if (resp.status == 200) {
+        this.userService.loginSuccess(this.form.controls["email"].value);
+        this.redirectToDashboard();
       } else {
         this.alertService.error(resp.message, {autoClose:true});
       }
 
     }, ({error}) => {
-      this.alertService.error(error.message, {autoClose:true});
+      if(error.status == 400){
+        this.alertService.error("User Already Registered");
+      }
+      else{
+        this.alertService.error(error.message);
+      }      
     });
   }
 
@@ -69,20 +69,8 @@ export class RegisterUserComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  public getLanguageList() {
-
-    this.userService.getPrefferedList().subscribe((response: any) => {
-      console.log(response);
-      this.languagePreference = response.spoken_languages;
-      this.zenrePreference = response.genres;
-      this.productionHousePreference = response.production_companies;
-    });
-
-
-  }
-
-  public getProductionList() {
-
+  public redirectToDashboard(){
+    this.router.navigateByUrl('/dashboard');
   }
 
   public setDropDownSetting(textValue: string): object {
