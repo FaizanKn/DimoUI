@@ -22,7 +22,6 @@ export class RegisterUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.getLanguageList();
   }
 
   public initForm() {
@@ -31,9 +30,6 @@ export class RegisterUserComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
-      languagePreference: [],
-      production: [],
-      genre: []
     });
     this.validateConfirmPassword();
   }
@@ -66,18 +62,6 @@ export class RegisterUserComponent implements OnInit {
 
   public redirectToLogin() {
     this.router.navigate(['']);
-  }
-
-  public getLanguageList() {
-
-    this.userService.getPrefferedList().subscribe((response: any) => {
-      console.log(response);
-      this.languagePreference = response.spoken_languages;
-      this.zenrePreference = response.genres;
-      this.productionHousePreference = response.production_companies;
-    });
-
-
   }
 
   public getProductionList() {
