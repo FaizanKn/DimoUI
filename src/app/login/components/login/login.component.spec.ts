@@ -4,6 +4,7 @@ import { LoginComponent } from './login.component';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
+import { AlertModule } from './../../../shared/alert/alert.module';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -13,7 +14,7 @@ describe('LoginComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
       providers:[],
-      imports: [FormsModule, RouterTestingModule, HttpClientModule]
+      imports: [FormsModule, RouterTestingModule, HttpClientModule, AlertModule]
     })
     .compileComponents();
   }));
