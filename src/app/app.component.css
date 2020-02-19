@@ -1,5 +1,17 @@
-::ng-deep div.alert  {
-    width: 90%;
-    left: 10%;
+::ng-deep alert  {
+    width: 80%;
+    left: 15%;
     top: 10px;
+    z-index: 99999;
+}
+
+
+.container-full-height-width{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.position-absolute{
+    position: absolute;
 }

@@ -1,13 +1,42 @@
-<form class="form-signin">
-  <img class="mb-4" src="../../../../assets/Dimo Logo with a dot.png" alt="" width="200">
-  <label for="exampleInputEmail1" class="sr-only">Email address</label>
-  <input type="email" [ngModelOptions]="{standalone: true}" [(ngModel)]="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-    placeholder="Email address" required autofocus>
-  <label for="exampleInputPassword1" class="sr-only">Password</label>
-  <input type="password" [ngModelOptions]="{standalone: true}" [(ngModel)]="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
-  <button (click)="login()" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-  <div class="p-1">
-    <a (click)="register()" href="javascript:void(0)">Not a user? Sign up</a>
-    <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
-  </div>
-</form>
+<div class="container-full-width-height">
+  <form class="form-signin">
+    <img class="mb-4" src="../../../../assets/logo.png" alt="" width="200">
+    <!-- <div class="input-group">
+        <label for="exampleInputEmail1" class="sr-only">Email address</label>
+        <input type="email" [ngModelOptions]="{standalone: true}" [(ngModel)]="email" class="form-control border-right-0" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="Email address" required autofocus>
+            <span class="input-group-append bg-white border-left-0">
+              <span class="input-group-text bg-transparent">
+                  <i class="icon ion-ios-search"></i>
+              </span>
+          </span>
+    </div> -->
+
+    <div class="input-group">
+        <input  [ngModelOptions]="{standalone: true}" [(ngModel)]="email"  class="form-control border-right-0" placeholder="Email address" required autofocus>
+        <span class="input-group-append border-bottom-right-radius-5 border-top-right-radius-5 bg-white border-left-0">
+            <span class="input-group-text bg-transparent">
+                <i class="fa fa-envelope-o"></i>
+            </span>
+        </span>
+    </div>
+
+    <div class="input-group password">
+      <input type="password" [ngModelOptions]="{standalone: true}" [(ngModel)]="password" class="form-control border-right-0" id="exampleInputPassword1" placeholder="Password" required>
+      <span class="input-group-append border-bottom-right-radius-5 border-top-right-radius-5 bg-white border-left-0">
+          <span class="input-group-text bg-transparent">
+              <i class="fa fa-lock"></i>
+          </span>
+      </span>
+    </div>
+ 
+    <!-- <label for="exampleInputPassword1" class="sr-only">Password</label>
+    <input type="password" [ngModelOptions]="{standalone: true}" [(ngModel)]="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required> -->
+    <button (click)="login()" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <div class="p-1 go-down">
+      <a (click)="register()" class="text-white" href="javascript:void(0)">Not a user? Sign up</a>
+      <p class="text-muted text-right">&copy; 2020</p>
+    </div>
+  </form>
+</div>
+
