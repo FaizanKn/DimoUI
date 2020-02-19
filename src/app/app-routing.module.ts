@@ -7,7 +7,7 @@ import { NavigationComponent } from "./dashboard/components/navigation/navigatio
 
 const routes: Routes = [{
   path: "",
-  component: NavigationComponent
+  component: LoginComponent
 }];
 
 @NgModule({
