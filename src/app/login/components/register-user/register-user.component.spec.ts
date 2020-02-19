@@ -7,6 +7,8 @@ import { UserService } from '../../services/user.service';
 import { Observable, of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 
+import { AlertModule } from './../../../shared/alert/alert.module';
+
 export class MockUserService {
   public doLogin(body: any): Observable<any> {
     return of(true);
@@ -28,7 +30,7 @@ describe('RegisterUserComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [RegisterUserComponent],
-      imports: [ReactiveFormsModule, HttpClientModule, RouterTestingModule, FormsModule],
+      imports: [ReactiveFormsModule, HttpClientModule, RouterTestingModule, FormsModule, AlertModule],
       providers: [{ provide: UserService, useClass: MockUserService }]
     }).overrideTemplate(RegisterUserComponent, "<div></div>")
       .compileComponents();
