@@ -15,10 +15,10 @@ export class UserService {
     }
 
     public doRegister(body: any): Observable<any> {
-        return this.http.post( '/api/signUp', body);
+        return this.http.post( '/api/signup', body);
     }
 
     public getPrefferedList(){
-        return this.http.get('/api/movie-types');
+        return this.http.get('/api/preferences');
     }
 }
