@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from './../../services/user.service';
-
+import { AlertService } from "./../../../shared/alert/alert.service";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   public email: string;
   public password: string;
 
-  constructor(private router: Router, private http: HttpClient, private userService: UserService) { }
+  constructor(private router: Router, private http: HttpClient, private userService: UserService, private alertService: AlertService) { }
 
   ngOnInit(): void {
   }
@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
             this.userService.loginSuccess(this.email);
             this.router.navigateByUrl('/dashboard');
           },
-          (err)=>{
-              console.log(err);
+          ({error})=>{
+              this.alertService.error(error.message);
           });
   }
 
