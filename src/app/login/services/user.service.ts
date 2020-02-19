@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { User } from '../model/user.model';
 @Injectable({
     providedIn: 'root'
 })
@@ -50,7 +51,9 @@ export class UserService {
     }
 
     public doRegister(body: any): Observable<any> {
-        return this.http.post( '/api/signup', body);
+        return this.http.post( '/api/signup', body, {
+            observe: "response"
+          });
     }
 
     public getPrefferedList(){
