@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { Alert, AlertType } from './alert.model';
 import { AlertService } from './alert.service';
+import { environment } from './../../../environments/environment';
 
 @Component({ selector: 'alert', templateUrl: 'alert.component.html' })
 export class AlertComponent implements OnInit, OnDestroy {
@@ -34,7 +35,7 @@ export class AlertComponent implements OnInit, OnDestroy {
                 this.alerts.push(alert);
                 // auto close alert if required
                 if (alert.autoClose) {
-                    setTimeout(() => this.removeAlert(alert), 3000);
+                    setTimeout(() => this.removeAlert(alert), environment.alertShownTime);
                 }
            });
 

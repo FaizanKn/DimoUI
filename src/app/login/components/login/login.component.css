@@ -27,7 +27,7 @@ body {
 }
 
 
-button[type=submit].btn{
+button[type=button].btn{
   border-radius: 35px;
   margin-top: 30px;
   background-color: #5149DB;
