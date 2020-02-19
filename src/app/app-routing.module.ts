@@ -12,44 +12,48 @@ export class CanActivateViaAuthGuard implements CanActivate {
   constructor(private authService: UserService, private router: Router) {}
 
   checkLogin(url: string): boolean {
-    
-    if(this.authService.isLoggedIn()){
-        if(url!= "/"){
+
+    if (this.authService.isLoggedIn()) {
+        if (url !== '/') {
           return true;
-        }
-        else{
-            this.router.navigateByUrl("/dashboard");
+        } else {
+            this.router.navigateByUrl('/dashboard');
             return false;
         }
-    }
-    else{
-      if(url== "/"){
+    } else {
+      if (url === '/') {
         return true;
-      }
-      else{
-          this.router.navigateByUrl("");
+      } else {
+          this.router.navigateByUrl('');
           return false;
       }
     }
 }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    let url: string = state.url;
+    const url: string = state.url;
     return this.checkLogin(url);
-    
+
   }
 }
 
 const routes: Routes = [{
-  path: "",
+  path: '',
   component: LoginComponent,
   canActivate: [ CanActivateViaAuthGuard ]
 },
 {
-  path:"dashboard",
+  path:'dashboard',
   component: DashboardComponent,
   canActivate: [ CanActivateViaAuthGuard ]
-}];
+},
+{
+  path:'movieDetails',
+  loadChildren: () => import('./movie-details/movie-details.module').then(m => m.MovieDetailsModule)
+}
+
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true}), LoginModule, DashboardModule],
