@@ -28,8 +28,14 @@ export class LoginComponent implements OnInit {
               this.userService.loginSuccess(this.email);
               this.router.navigateByUrl('/dashboard');
             },
-            ({error})=>{
-                this.alertService.error(error.message, {autoClose:true});
+            (error)=>{  
+              if(error.status == 400 || error.status == 401){
+                this.alertService.error("Invalid Username or Password");
+              }   
+              else{
+                this.alertService.error("Error Occurred");
+              }     
+                
             });
         else{
             if(this.isAlertBoxShown == false){
