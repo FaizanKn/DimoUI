@@ -47,7 +47,9 @@ export class UserService {
     }
 
     public doLogin(body: any): Observable<any> {
-        return this.http.post('/api/login', body);
+        return this.http.post('/api/login', body, {
+            observe: "response"
+          });
     }
 
     public doRegister(body: any): Observable<any> {
