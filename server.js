@@ -19,7 +19,7 @@ app.get('/api/*', function (req, res) {
         })
         .catch(error => {
             console.log(error);
-            res.sendStatus(500)
+            res.status(error.response.status).send(error.response.data);
         });
 });
 
@@ -38,7 +38,7 @@ app.post('/api/*', function (req, res) {
         })
         .catch(function (error) {
             console.log(error);
-            res.sendStatus(500);
+            res.status(error.response.status).send(error.response.data);
         });
 });
 
