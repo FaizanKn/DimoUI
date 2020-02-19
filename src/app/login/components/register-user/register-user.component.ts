@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { User } from '../../model/user.model';
+import { AlertService } from './../../../shared/alert/alert.service';
 
 @Component({
   selector: 'app-register-user',
@@ -18,7 +19,7 @@ export class RegisterUserComponent implements OnInit {
   public dropdownSettings: any = {};
 
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private alertService: AlertService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -39,14 +40,14 @@ export class RegisterUserComponent implements OnInit {
     this.userService.doRegister(requestBody).subscribe((resp) => {
       console.log(resp);
       if (resp.statusCode === true) {
-        alert("Registration Successful!");
+        this.alertService.success("Registration Successful!");
         this.redirectToLogin();
       } else {
-        alert(resp.message);
+        this.alertService.error(resp.message);
       }
 
-    }, error => {
-      console.log(error);
+    }, ({error}) => {
+      this.alertService.error(error.message);
     });
   }
 

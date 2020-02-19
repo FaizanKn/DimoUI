@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, CanActivateViaAuthGuard } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { AlertModule } from "./shared/alert/alert.module";
 
 @NgModule({
   declarations: [
@@ -10,9 +12,11 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AlertModule
   ],
-  providers: [],
+  providers: [ CanActivateViaAuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
