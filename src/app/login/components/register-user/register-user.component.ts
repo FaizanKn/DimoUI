@@ -46,12 +46,12 @@ export class RegisterUserComponent implements OnInit {
         this.alertService.error(resp.message, {autoClose:true});
       }
 
-    }, ({error}) => {
+    }, (error) => {
       if(error.status == 400){
-        this.alertService.error("User Already Registered");
+        this.alertService.error("User Already Registered", {autoClose:true});
       }
       else{
-        this.alertService.error("Error Occurred");
+        this.alertService.error("Error Occurred", {autoClose:true});
       }      
     });
   }

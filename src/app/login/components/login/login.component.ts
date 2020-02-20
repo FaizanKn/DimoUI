@@ -31,10 +31,10 @@ export class LoginComponent implements OnInit {
             },
             (error)=>{  
               if(error.status == 400 || error.status == 401){
-                this.alertService.error("Invalid Username or Password");
+                this.alertService.error("Invalid Username or Password", {autoClose: true});
               }   
               else{
-                this.alertService.error("Error Occurred");
+                this.alertService.error("Error Occurred", {autoClose: true});
               }     
                 
             });
