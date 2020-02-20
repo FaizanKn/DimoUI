@@ -5,6 +5,7 @@
 }
  body {
 	 background: #43423e;
+
 }
  a {
 	 text-decoration: none;
@@ -175,8 +176,13 @@ li{
 li::after{
 	content: ',';
 }
-:last-child:after {
+li:last-child:after {
     content: "";
+}
+
+li:first-child:after {
+	content: ":";
+	font-weight: bolder;
 }
 
 ul {
@@ -199,3 +205,43 @@ ul {
 p{
 	word-break: break-word;
 }
+
+#releaseDate{
+	text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: .8em;
+  color: #2a9fff;
+  line-height: 1;
+  margin: 0;
+  font-weight: 700;
+  opacity: .5;
+}
+
+.movie-tag {
+	background: #fff;
+	border-radius: 10px;
+	padding: 3px 8px;
+	font-size: 14px;
+	margin-right: 4px;
+	line-height: 35px;
+	cursor: pointer;
+	transition: all 0.3s linear;
+}
+
+.card {
+    background-color: transparent;
+    color: #b1b0ac;
+}
+
+@media only screen and (max-device-width: 480px) {
+	/* styles for mobile browsers smaller than 480px; (iPhone) */
+	img{
+		padding: 5px;
+    width: 92%;
+    margin: auto;
+	}
+
+img:hover{
+	transform: scale(1);
+  }
+ }
