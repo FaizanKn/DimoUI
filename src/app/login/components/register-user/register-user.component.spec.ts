@@ -17,7 +17,7 @@ export class MockUserService {
   public doRegister(body: any): Observable<any> {
     return of({status: 200});
   }
-  public loginSuccess(email: string){
+  public loginSuccess(email: string, name: string){
 }
 
 }

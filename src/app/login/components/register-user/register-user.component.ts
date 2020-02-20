@@ -39,7 +39,7 @@ export class RegisterUserComponent implements OnInit {
     const requestBody = new User(this.form.value);
     this.userService.doRegister(requestBody).subscribe((resp) => {
       if (resp.status == 200) {
-        this.userService.loginSuccess(this.form.controls["email"].value);
+        this.userService.loginSuccess(this.form.controls["email"].value, this.form.controls["name"].value);
         this.redirectToDashboard();
       } else {
         this.alertService.error(resp.message, {autoClose:true});

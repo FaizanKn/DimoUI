@@ -8,7 +8,10 @@ import { UserService } from "./../../login/services/user.service";
 })
 export class NavigationBarComponent implements OnInit {
 
-  constructor(private router: Router, private userService: UserService) { }
+  userName:string;
+  constructor(private router: Router, private userService: UserService) { 
+    this.userName = localStorage.getItem("userName");
+  }
 
   ngOnInit(): void {
   }

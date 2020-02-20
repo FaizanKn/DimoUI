@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
       login(){
         if(this.email && this.password)
           this.http.post("/api/login",{email: this.email, password:this.password})
-            .subscribe((result)=>{
-              this.userService.loginSuccess(this.email);
+            .subscribe((result: any)=>{
+              this.userService.loginSuccess(this.email, result.name);
               this.router.navigateByUrl('/dashboard');
             },
             (error)=>{  
