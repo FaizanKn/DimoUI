@@ -80,9 +80,8 @@
  .movie .movie-container .movie-hero .movie-details .movie-genres {
 	 color: black;
 	 font-size: 16px;
-	 font-weight: 300;
+	 font-weight: 500;
 	 margin-bottom: 15px;
-	 text-shadow: 0 0 5px #000;
 }
  .movie .movie-container .movie-hero .movie-details .movie-rating {
 	 border: none;
@@ -193,4 +192,8 @@ ul {
 		text-decoration: none;
 		color: white
 
+}
+
+p{
+	word-break: break-word;
 }

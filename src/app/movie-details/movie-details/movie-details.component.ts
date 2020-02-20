@@ -13,42 +13,35 @@ export class MovieDetailsComponent implements OnInit {
 
   public thumbNail = `https://image.tmdb.org/t/p/w400`;
   public movie: any;
-  constructor(private movieDetailService: MovieDetailService, private route: ActivatedRoute) { }
+  constructor(private movieDetailService: MovieDetailService) { }
 
   ngOnInit(): void {
-
-    this.movieDetailService.movieId.subscribe((id)=>{
+    this.movieDetailService.getMovieId().subscribe((id) => {
       this.getMovieById(id);
     });
-  
-   
   }
 
   public getMovieThumbNailsByMovie(movieName: string = '3 Idiots') {
-     this.movieDetailService.getMovieThumbNailByAPI(movieName).subscribe((resp: any) => {
-      console.log(resp);
+    this.movieDetailService.getMovieThumbNailByAPI(movieName).subscribe((resp: any) => {
       const movieResultsByName = resp.results as Array<any>;
       if (movieResultsByName.length > 0) {
-        const movie  = movieResultsByName.filter((mov) => {
-             return mov.original_title === movieName;
-           });
+        const movie = movieResultsByName.filter((mov) => {
+          return mov.original_title === movieName;
+        });
         this.thumbNail += movie[0].poster_path;
-        console.log(this.thumbNail);
       }
     });
   }
 
   public getMovieById(movieId: string = '99861') {
-     this.movieDetailService.getMovieById(movieId).subscribe((response) => {
-        this.movie = response;
-        console.log(this.movie);
-        if (this.movie) {
-          this.getMovieThumbNailsByMovie(this.movie.originalTitle);
-        }
-     });
+    this.movieDetailService.getMovieById(movieId).subscribe((response) => {
+      this.movie = response;
+      console.log(this.movie);
+      if (this.movie) {
+        this.getMovieThumbNailsByMovie(this.movie.originalTitle);
+      }
+    });
   }
-
-
 
 
 }
