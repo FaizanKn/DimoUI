@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 })
 export class WallpaperService {
     
-    private selectedWallpaperIndex : number = window.Math.ceil(window.Math.random() * 10) % 7;
+    private selectedWallpaperIndex : number = window.Math.ceil(window.Math.random() * 10) % 5;
 
     getWallpaperIndex(){
         return this.selectedWallpaperIndex;
