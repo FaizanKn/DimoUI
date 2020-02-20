@@ -31,8 +31,16 @@ export class AlertComponent implements OnInit, OnDestroy {
                     return;
                 }
 
+                this.alerts.forEach((x,i)=>{
+                    if(x.message == alert.message){
+                        this.alerts.splice(i,1);
+                        this.removeAlert(x);
+                    }
+                })
+
                 // add alert to array
                 this.alerts.push(alert);
+
                 // auto close alert if required
                 if (alert.autoClose) {
                     setTimeout(() => this.removeAlert(alert), environment.alertShownTime);
@@ -54,6 +62,7 @@ export class AlertComponent implements OnInit, OnDestroy {
     }
 
     removeAlert(alert: Alert) {
+        if(this.alerts.find(x => x === alert))
         if (this.fade) {
             // fade out alert
             this.alerts.find(x => x === alert).fade = true;
