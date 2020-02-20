@@ -20,7 +20,7 @@ export class RegisterUserComponent implements OnInit {
   public dropdownSettings: any = {};
 
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private alertService: AlertService, public wallpaperService : WallpaperService) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private alertService: AlertService, public wallpaperService: WallpaperService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -28,8 +28,8 @@ export class RegisterUserComponent implements OnInit {
 
   public initForm() {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      name: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.pattern(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/)]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
     });
@@ -43,16 +43,16 @@ export class RegisterUserComponent implements OnInit {
         this.userService.loginSuccess(this.form.controls["email"].value, this.form.controls["name"].value);
         this.redirectToDashboard();
       } else {
-        this.alertService.error(resp.message, {autoClose:true});
+        this.alertService.error(resp.message, { autoClose: true });
       }
 
     }, (error) => {
-      if(error.status == 400){
-        this.alertService.error("User Already Registered", {autoClose:true});
+      if (error.status == 400) {
+        this.alertService.error("User Already Registered", { autoClose: true });
       }
-      else{
-        this.alertService.error("Error Occurred", {autoClose:true});
-      }      
+      else {
+        this.alertService.error("Error Occurred", { autoClose: true });
+      }
     });
   }
 
@@ -70,7 +70,7 @@ export class RegisterUserComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  public redirectToDashboard(){
+  public redirectToDashboard() {
     this.router.navigateByUrl('/dashboard');
   }
 
