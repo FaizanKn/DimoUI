@@ -5,7 +5,7 @@ import { CanActivateViaAuthGuard } from '../app-routing.module';
 
 
 const routes: Routes = [
-  {path:'', component: MovieDetailsComponent}
+  {path: '', component: MovieDetailsComponent}
 ];
 
 @NgModule({

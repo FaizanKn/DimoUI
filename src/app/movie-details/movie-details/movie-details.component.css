@@ -1,6 +1,196 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+ @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+ *, *:before, *:after {
+	 box-sizing: border-box;
+}
+ body {
+	 background: #43423e;
+}
+ a {
+	 text-decoration: none;
+	 color: #5c7fb8;
+}
+ a:hover {
+	 text-decoration: underline;
+}
+ .movie {
+	 font: 14px/22px "Lato", Arial, sans-serif;
+	 color: #a9a8a3;
+	 padding: 40px 0;
+}
+ .movie .movie-container {
+	 margin: 0 auto;
+	 width: 780px;
+	 height: 640px;
+	 background: #f0f0ed;
+	 border-radius: 5px;
+	 position: relative;
+}
+ .movie .movie-container .movie-cover {
+	 position: absolute;
+	 top: 160px;
+	 left: 60px;
+	 z-index: 2;
+	 width: 187px;
+}
+ .movie .movie-container .movie-hero {
+	 height: 342px;
+	 margin: 0;
+	 position: relative;
+	 overflow: hidden;
+	 z-index: 1;
+	 border-radius: 5px 5px 0 0;
+}
+ .movie .movie-container .movie-hero:before {
+	 content: '';
+	 width: 100%;
+	 height: 100%;
+	 position: absolute;
+	 overflow: hidden;
+	 top: 0;
+	 left: 0;
+	 background: url("http://more-sky.com/data/out/6/IMG_131056.png");
+	 background-size: cover;
+	 transform: skewY(-2.2deg);
+	 transform-origin: 0 0;
+	 z-index: -1;
+	 -webkit-backface-visibility: hidden;
+}
+ .movie .movie-container .movie-hero .movie-details {
+	 padding: 165px 0 0 280px;
+}
+ .movie .movie-container .movie-hero .movie-details .movie-title {
+	 color: #fff;
+	 font-size: 44px;
+	 margin-bottom: 13px;
+	 position: relative;
+	 text-shadow: 0 0 5px #000;
+}
+ .movie .movie-container .movie-hero .movie-details .movie-title span {
+	 position: absolute;
+	 top: 6px;
+	 right: 105px;
+	 background: #c4af3d;
+	 border-radius: 5px;
+	 color: #544c21;
+	 font-size: 14px;
+	 padding: 0px 4px;
+	 text-shadow: none;
+}
+ .movie .movie-container .movie-hero .movie-details .movie-genres {
+	 color: black;
+	 font-size: 16px;
+	 font-weight: 300;
+	 margin-bottom: 15px;
+	 text-shadow: 0 0 5px #000;
+}
+ .movie .movie-container .movie-hero .movie-details .movie-rating {
+	 border: none;
+	 float: left;
+}
+ .movie .movie-container .movie-hero .movie-details .movie-rating label {
+	 margin: 0;
+	 padding: 0;
+	 color: #ddd;
+	 float: right;
+}
+ .movie .movie-container .movie-hero .movie-details .movie-rating > input {
+	 display: none;
+}
+ .movie .movie-container .movie-hero .movie-details .movie-rating > label:before {
+	 margin: 5px;
+	 margin-top: 0;
+	 font-size: 1em;
+	 font-family: FontAwesome;
+	 display: inline-block;
+	 content: "\f005";
+}
+ .movie .movie-container .movie-hero .movie-details .movie-rating > input:checked ~ label, .movie .movie-container .movie-hero .movie-details .movie-rating:not(:checked) > label:hover, .movie .movie-container .movie-hero .movie-details .movie-rating:not(:checked) > label:hover ~ label {
+	 color: #ffd700;
+}
+ .movie .movie-container .movie-hero .movie-details .movie-rating > input:checked + label:hover, .movie .movie-container .movie-hero .movie-details .movie-rating > input:checked ~ label:hover, .movie .movie-container .movie-hero .movie-details .movie-rating > label:hover ~ input:checked ~ label, .movie .movie-container .movie-hero .movie-details .movie-rating > input:checked ~ label:hover ~ label {
+	 color: #ffed85;
+}
+ .movie .movie-container .movie-hero .movie-details .likes {
+	 margin-left: 24px;
+}
+ .movie .movie-container .movie-hero .movie-details .likes:before {
+	 content: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/icon_like.png");
+	 position: relative;
+	 top: 2px;
+	 margin-right: 7px;
+}
+ .movie .movie-container .movie-descript {
+	 bottom: 0;
+	 height: 200px;
+	 font-size: 16px;
+	 line-height: 26px;
+	 color: #b1b0ac;
+}
+ .movie .movie-container .movie-descript .column1 {
+	 padding-left: 50px;
+	 padding-top: 120px;
+	 width: 220px;
+	 float: left;
+	 text-align: center;
+}
+ .movie .movie-container .movie-descript .column1 .movie-tag {
+	 background: #fff;
+	 border-radius: 10px;
+	 padding: 3px 8px;
+	 font-size: 14px;
+	 margin-right: 4px;
+	 line-height: 35px;
+	 cursor: pointer;
+	 transition: all 0.3s linear;
+}
+ .movie .movie-container .movie-descript .column1 .movie-tag:hover {
+	 background: #ddd;
+}
+ .movie .movie-container .movie-descript .column2 {
+	 padding-left: 41px;
+	 padding-top: 10px;
+	 margin-left: 20px;
+	 width: 480px;
+	 float: left;
+}
+ 
+img{
+  transition: all .2s ease-in-out;
+}
 
-.genreList{
+img:hover{
+  transform: scale(1.2);
+}
 
-margin-left: -32px;
-margin-top: 4px;
+ul{
+	list-style-type: none;
+}
+li{
+	display: inline-block;
+	margin-right:5px ;
+}
+
+li::after{
+	content: ',';
+}
+:last-child:after {
+    content: "";
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+
+.movie-title a{
+
+		text-decoration: none;
+		color: white
+
 }

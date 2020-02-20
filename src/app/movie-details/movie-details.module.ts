@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MovieDetailsRoutingModule } from './movie-details-routing.module';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { MovieDetailService } from './movie-details/movie-detail.service';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
   imports: [
     CommonModule,
     MovieDetailsRoutingModule
-  ]
+  ],
+  providers: [MovieDetailService]
 })
 export class MovieDetailsModule { }

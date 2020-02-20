@@ -48,7 +48,7 @@ const routes: Routes = [{
   canActivate: [ CanActivateViaAuthGuard ]
 },
 {
-  path:'movieDetails',
+  path:'movie-details',
   loadChildren: () => import('./movie-details/movie-details.module').then(m => m.MovieDetailsModule)
 }
 
@@ -56,7 +56,7 @@ const routes: Routes = [{
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true}), LoginModule, DashboardModule],
+  imports: [RouterModule.forRoot(routes, {useHash: true, enableTracing: true}), LoginModule, DashboardModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
