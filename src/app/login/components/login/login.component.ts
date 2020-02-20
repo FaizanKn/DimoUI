@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from './../../services/user.service';
 import { AlertService } from "./../../../shared/alert/alert.service";
 import { environment } from "./../../../../environments/environment";
+import { WallpaperService } from "./../../services/wallpaper.service";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   public password: string;
   public isAlertBoxShown: boolean = false;
 
-  constructor(private router: Router, private http: HttpClient, private userService: UserService, private alertService: AlertService) { }
+  constructor(private router: Router, private http: HttpClient, private userService: UserService, private alertService: AlertService, public wallpaperService : WallpaperService) { }
 
   ngOnInit(): void {
   }
