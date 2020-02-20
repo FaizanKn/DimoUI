@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { User } from '../../model/user.model';
+import { AlertService } from './../../../shared/alert/alert.service';
+import { WallpaperService } from "./../../services/wallpaper.service";
 
 @Component({
   selector: 'app-register-user',
@@ -18,11 +20,10 @@ export class RegisterUserComponent implements OnInit {
   public dropdownSettings: any = {};
 
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private alertService: AlertService, public wallpaperService : WallpaperService) { }
 
   ngOnInit(): void {
     this.initForm();
-    this.getLanguageList();
   }
 
   public initForm() {
@@ -31,9 +32,6 @@ export class RegisterUserComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
-      languagePreference: [],
-      production: [],
-      genre: []
     });
     this.validateConfirmPassword();
   }
@@ -41,16 +39,20 @@ export class RegisterUserComponent implements OnInit {
   public submit() {
     const requestBody = new User(this.form.value);
     this.userService.doRegister(requestBody).subscribe((resp) => {
-      console.log(resp);
-      if (resp.statusCode === true) {
-        alert("Registration Successful!");
-        this.redirectToLogin();
+      if (resp.status == 200) {
+        this.userService.loginSuccess(this.form.controls["email"].value, this.form.controls["name"].value);
+        this.redirectToDashboard();
       } else {
-        alert(resp.message);
+        this.alertService.error(resp.message, {autoClose:true});
       }
 
-    }, error => {
-      console.log(error);
+    }, (error) => {
+      if(error.status == 400){
+        this.alertService.error("User Already Registered", {autoClose:true});
+      }
+      else{
+        this.alertService.error("Error Occurred", {autoClose:true});
+      }      
     });
   }
 
@@ -68,20 +70,8 @@ export class RegisterUserComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  public getLanguageList() {
-
-    this.userService.getPrefferedList().subscribe((response: any) => {
-      console.log(response);
-      this.languagePreference = response.spoken_languages;
-      this.zenrePreference = response.genres;
-      this.productionHousePreference = response.production_companies;
-    });
-
-
-  }
-
-  public getProductionList() {
-
+  public redirectToDashboard(){
+    this.router.navigateByUrl('/dashboard');
   }
 
   public setDropDownSetting(textValue: string): object {

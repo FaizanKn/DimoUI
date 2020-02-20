@@ -3,7 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule, CanActivateViaAuthGuard } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule} from '@angular/common/http';
+
+import { AlertModule } from "./shared/alert/alert.module";
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -11,6 +14,7 @@ import { HttpClientModule} from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AlertModule,
     HttpClientModule
   ],
   providers: [ CanActivateViaAuthGuard ],

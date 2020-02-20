@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { User } from '../model/user.model';
 @Injectable({
     providedIn: 'root'
 })
@@ -13,8 +14,9 @@ export class UserService {
 
     constructor(private http: HttpClient) { }
 
-    public loginSuccess(email: string){
+    public loginSuccess(email: string, name: string){
         this.userEmail = email;
+        localStorage.setItem("userName",name);
         (<any>window).document.cookie = "dimo-user="+(<any>window).btoa(email)+"; Path=/;";
     }
 
@@ -46,11 +48,15 @@ export class UserService {
     }
 
     public doLogin(body: any): Observable<any> {
-        return this.http.post('/api/login', body);
+        return this.http.post('/api/login', body, {
+            observe: "response"
+          });
     }
 
     public doRegister(body: any): Observable<any> {
-        return this.http.post( '/api/signup', body);
+        return this.http.post( '/api/signup', body, {
+            observe: "response"
+          });
     }
 
     public getPrefferedList(){

@@ -5,6 +5,7 @@ import { LoginComponent } from './login/components/login/login.component';
 import { DashboardComponent } from './dashboard/components/dashboard.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { UserService } from './login/services/user.service';
+import { MovieDashboardComponent } from './dashboard/components/movie-dashboard/movie-dashboard.component';
 
 @Injectable()
 export class CanActivateViaAuthGuard implements CanActivate {
@@ -43,8 +44,8 @@ const routes: Routes = [{
   canActivate: [ CanActivateViaAuthGuard ]
 },
 {
-  path:'dashboard',
-  component: DashboardComponent,
+  path:"dashboard",
+  component: MovieDashboardComponent,
   canActivate: [ CanActivateViaAuthGuard ]
 },
 {

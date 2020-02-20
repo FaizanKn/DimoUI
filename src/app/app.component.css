@@ -1,0 +1,55 @@
+::ng-deep alert  {
+    width: 80%;
+    left: 15%;
+    top: 10px;
+    z-index: 99999;
+}
+
+::ng-deep .bg-0{
+    background-image: url('./../assets/0.jpg');
+    background-size: cover;
+}
+
+::ng-deep .bg-1{
+    background-image: url('./../assets/1.jpg');
+    background-size: cover;
+}
+
+::ng-deep .bg-2{
+    background-image: url('./../assets/2.jpg');
+    background-size: cover;
+}
+
+::ng-deep .bg-3{
+    background-image: url('./../assets/3.jpg');
+    background-size: cover;
+}
+
+::ng-deep .bg-4{
+    background-image: url('./../assets/4.jpg');
+    background-size: cover;
+}
+
+::ng-deep .bg-5{
+    background-image: url('./../assets/5.jpg');
+    background-size: cover;
+}
+::ng-deep .bg-6{
+    background-image: url('./../assets/6.jpg');
+    background-size: cover;
+}
+::ng-deep .bg-7{
+    background-image: url('./../assets/7.jpg');
+    background-size: cover;
+}
+
+
+.container-full-height-width{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.position-absolute{
+    position: absolute;
+}

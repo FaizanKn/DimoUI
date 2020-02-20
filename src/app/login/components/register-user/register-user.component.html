@@ -1,23 +1,24 @@
+<div class="container-full-width-height" [ngClass]="wallpaperService.getWallpaperClass()">
 <form [formGroup]="form" (submit)="submit()" class="form-signup">
-  <img class="mb-4" src="../../../../assets/Dimo Logo with a dot.png" alt="" width="200">
+  <img class="mb-4" src="../../../../assets/logo.png" alt="" width="200">
 
     <div class="form-group">
-      <label for="exampleInputPassword1">Name</label>
+      <label for="name">Name</label>
       <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
       <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)"
-        class="alert alert-danger">
+        class="danger">
         <div *ngIf="form.controls['name'].hasError('required') ">
           Name is required
         </div>
       </div>
     </div>
     <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
+      <label for="exampleInputEmail1">Email</label>
       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
         placeholder="Enter email" formControlName="email">
 
       <div *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)"
-        class="alert alert-danger">
+        class="danger">
         <div *ngIf="form.controls['email'].hasError('required') ">
           Email is required
         </div>
@@ -37,7 +38,7 @@
 
       <div
         *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)"
-        class="alert alert-danger">
+        class="danger">
         <div *ngIf="form.controls['password'].hasError('required') ">
           Password is required
         </div>
@@ -52,13 +53,13 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Confirm Password</label>
+      <label for="exampleConfirmPassword1">Confirm password</label>
       <input type="password" class="form-control" id="exampleConfirmPassword1" placeholder="Confirm Password"
         formControlName="confirmPassword">
 
       <div
         *ngIf="form.controls['confirmPassword'].invalid && (form.controls['confirmPassword'].dirty || form.controls['confirmPassword'].touched)"
-        class="alert alert-danger">
+        class="danger">
         <div *ngIf="form.controls['confirmPassword'].hasError('required') ">
           Password is required
         </div>
@@ -78,33 +79,15 @@
       </div>
 
     </div>
-
-  <div class="form-group">
-    <label for="name">Preferred Languages</label>
-    <angular2-multiselect [data]="languagePreference" [settings]="setDropDownSetting('Select Languages')"
-      formControlName="languagePreference">
-    </angular2-multiselect>
-  </div>
-
-  <div class="form-group">
-    <label for="genre">Preferred Genre</label>
-    <angular2-multiselect [data]="zenrePreference" [settings]="setDropDownSetting('Select Genre')"
-      formControlName="genre">
-    </angular2-multiselect>
-  </div>
-
-  <div class="form-group">
-    <label for="name">Preferred Production House</label>
-    <angular2-multiselect aria-placeholder="" [data]="productionHousePreference"
-      [settings]="setDropDownSetting('Select Production')" formControlName="production">
-    </angular2-multiselect>
-  </div>
+    
   <!-- <div class="p-1"> -->
   <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
 
   <!-- </div> -->
   <div class="form-group p-1">
-    <a href="javascript:void(0)" (click)="redirectToLogin()">Already User? Login</a>
+    <a href="javascript:void(0)" (click)="redirectToLogin()" class="text-white">Already User? Login</a>
+    <p class="text-muted text-right">&copy; 2020</p>
   </div>
 
 </form>
+</div>

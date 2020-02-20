@@ -11,7 +11,6 @@ import { MovieDetailService } from './movie-details/movie-detail.service';
   imports: [
     CommonModule,
     MovieDetailsRoutingModule
-  ],
-  providers: [MovieDetailService]
+  ]
 })
 export class MovieDetailsModule { }

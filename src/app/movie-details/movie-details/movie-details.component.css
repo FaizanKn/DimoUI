@@ -22,7 +22,8 @@
 	 margin: 0 auto;
 	 width: 780px;
 	 height: 640px;
-	 background: #f0f0ed;
+	 /* background: #f0f0ed; */
+	 background: #252323ad;
 	 border-radius: 5px;
 	 position: relative;
 }
@@ -168,6 +169,7 @@ ul{
 li{
 	display: inline-block;
 	margin-right:5px ;
+	color: #a9a8a3;
 }
 
 li::after{
