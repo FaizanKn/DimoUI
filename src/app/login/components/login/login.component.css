@@ -6,7 +6,8 @@ body {
   width:100%;
   height: 100%;
   padding-top: 10%;
-  background: url('./../../../../assets/login-bg.jpg');
+  overflow: auto;
+  /* background: url('./../../../../assets/login-bg.jpg'); */
 }
 body {
   display: -ms-flexbox;
