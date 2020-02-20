@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { User } from '../../model/user.model';
 import { AlertService } from './../../../shared/alert/alert.service';
+import { WallpaperService } from "./../../services/wallpaper.service";
 
 @Component({
   selector: 'app-register-user',
@@ -19,7 +20,7 @@ export class RegisterUserComponent implements OnInit {
   public dropdownSettings: any = {};
 
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private alertService: AlertService) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private alertService: AlertService, public wallpaperService : WallpaperService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -45,12 +46,12 @@ export class RegisterUserComponent implements OnInit {
         this.alertService.error(resp.message, {autoClose:true});
       }
 
-    }, ({error}) => {
+    }, (error) => {
       if(error.status == 400){
-        this.alertService.error("User Already Registered");
+        this.alertService.error("User Already Registered", {autoClose:true});
       }
       else{
-        this.alertService.error("Error Occurred");
+        this.alertService.error("Error Occurred", {autoClose:true});
       }      
     });
   }
