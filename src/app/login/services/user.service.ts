@@ -14,8 +14,9 @@ export class UserService {
 
     constructor(private http: HttpClient) { }
 
-    public loginSuccess(email: string){
+    public loginSuccess(email: string, name: string){
         this.userEmail = email;
+        localStorage.setItem("userName",name);
         (<any>window).document.cookie = "dimo-user="+(<any>window).btoa(email)+"; Path=/;";
     }
 
