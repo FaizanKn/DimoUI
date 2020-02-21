@@ -45,18 +45,18 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   public getMovieById(movieId: string) {
-    this.showLoader = true;
+    // this.showLoader = true;
     this.movieDetailService.getMovieById(movieId).subscribe((response) => {
-      this.showLoader = false;
+      // this.showLoader = false;
       this.movie = response;
       // console.log(this.movie);
       // if (this.movie) {
       //   this.getMovieThumbNailsByMovie(this.movie.originalTitle);
       // }
     },
-    err => {
-      this.showLoader = false;
-    });
+      err => {
+        this.showLoader = false;
+      });
   }
 
 
