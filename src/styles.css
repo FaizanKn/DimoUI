@@ -16,7 +16,7 @@ body{
     color:red;
 }
 .movie-card{
- height: 430px;
+ height: auto;
  border: 1px solid white;
  padding: 1.5rem;
  cursor: pointer;
