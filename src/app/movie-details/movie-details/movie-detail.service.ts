@@ -14,8 +14,13 @@ export class MovieDetailService {
 
     
     public getMovieId(): Observable<string>{
-        return this.movieId;
+        return this.movieId.asObservable();
       }
+
+     public setMovieId(id: any){
+         this.movieId = new BehaviorSubject(id);
+         this.movieId.next(id);
+     } 
 
     public getMovieThumbNailByAPI(movieName: string){
         return this.http.get(this.movieDBUrl + movieName);

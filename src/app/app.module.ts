@@ -17,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     AlertModule,
     HttpClientModule
   ],
-  providers: [ CanActivateViaAuthGuard ],
+  providers: [ CanActivateViaAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

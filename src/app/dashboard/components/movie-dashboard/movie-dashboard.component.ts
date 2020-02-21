@@ -27,7 +27,7 @@ export class MovieDashboardComponent implements OnInit {
 
   redirectToMovieList(movie: any){
       console.log(movie.movieId);
-      this.movieDetailService.movieId.next(movie.movieId);
+      this.movieDetailService.setMovieId(movie.movieId);
       this.router.navigateByUrl("/movie-details");
   }
 

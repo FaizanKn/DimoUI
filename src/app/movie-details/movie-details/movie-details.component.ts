@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { MovieDetailService } from './movie-detail.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -11,21 +11,24 @@ import { WallpaperService } from 'src/app/login/services/wallpaper.service';
   styleUrls: ['./movie-details.component.css']
 })
 export class MovieDetailsComponent implements OnInit {
+  
 
   public thumbNail = `https://image.tmdb.org/t/p/w400`;
   public showLoader: boolean;
   public movie: any;
-  constructor(private movieDetailService: MovieDetailService,public wallpaperService: WallpaperService, private router: Router) { }
+  constructor(private movieDetailService: MovieDetailService,public wallpaperService: WallpaperService, private router: Router,
+              private changeDetection: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.movieDetailService.getMovieId().subscribe((id) => {
       if(id){
         localStorage.setItem('movieId',id);
       this.getMovieById(id);
+      this.movieDetailService.movieId.unsubscribe();
       } else {
         this.router.navigate(['/dashboard']);
       }
-      
+     
     });
   }
 
@@ -55,6 +58,8 @@ export class MovieDetailsComponent implements OnInit {
       this.showLoader = false;
     });
   }
+
+
 
 
 }
