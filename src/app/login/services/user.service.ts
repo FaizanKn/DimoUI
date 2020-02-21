@@ -8,8 +8,6 @@ import { User } from '../model/user.model';
 })
 export class UserService {
 
-    private url: string = 'https://dimoapi.herokuapp.com/api/';
-
     private userEmail: string;
 
     constructor(private http: HttpClient) { }
@@ -25,10 +23,14 @@ export class UserService {
         (<any>window).document.cookie = "dimo-user=; Path=/;Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
     }
 
+    public getEmailAddress(){
+        return this.userEmail;
+    }
+
     public getEmailCookie() {
         var value = "; " + document.cookie;
         var parts = value.split("dimo-user=");
-        if (parts.length == 2) return (<any>window).btoa(parts.pop().split(";").shift());
+        if (parts.length == 2) return (<any>window).atob(parts.pop().split(";").shift());
         else return null;
     }
 

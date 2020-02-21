@@ -2,7 +2,6 @@ import { NgModule , Injectable} from '@angular/core';
 import { Routes, Router, RouterModule, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { LoginModule } from './login/login.module';
 import { LoginComponent } from './login/components/login/login.component';
-import { DashboardComponent } from './dashboard/components/dashboard.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { UserService } from './login/services/user.service';
 import { MovieDashboardComponent } from './dashboard/components/movie-dashboard/movie-dashboard.component';
