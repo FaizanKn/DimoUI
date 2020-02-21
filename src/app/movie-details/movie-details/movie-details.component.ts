@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieDetailService } from './movie-detail.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { WallpaperService } from 'src/app/login/services/wallpaper.service';
@@ -14,11 +14,17 @@ export class MovieDetailsComponent implements OnInit {
 
   public thumbNail = `https://image.tmdb.org/t/p/w400`;
   public movie: any;
-  constructor(private movieDetailService: MovieDetailService,public wallpaperService: WallpaperService) { }
+  constructor(private movieDetailService: MovieDetailService,public wallpaperService: WallpaperService, private router: Router) { }
 
   ngOnInit(): void {
     this.movieDetailService.getMovieId().subscribe((id) => {
+      if(id){
+        localStorage.setItem('movieId',id);
       this.getMovieById(id);
+      } else {
+        this.router.navigate(['/dashboard']);
+      }
+      
     });
   }
 
