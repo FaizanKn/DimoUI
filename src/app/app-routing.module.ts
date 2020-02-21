@@ -13,36 +13,33 @@ export class CanActivateViaAuthGuard implements CanActivate {
   constructor(private authService: UserService, private router: Router) {}
 
   checkLogin(url: string): boolean {
-    
-    if(this.authService.isLoggedIn()){
-        if(url!= "/"){
+
+    if (this.authService.isLoggedIn()) {
+        if (url !== '/') {
           return true;
-        }
-        else{
-            this.router.navigateByUrl("/dashboard");
+        } else {
+            this.router.navigateByUrl('/dashboard');
             return false;
         }
-    }
-    else{
-      if(url== "/"){
+    } else {
+      if (url === '/') {
         return true;
-      }
-      else{
-          this.router.navigateByUrl("");
+      } else {
+          this.router.navigateByUrl('');
           return false;
       }
     }
 }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    let url: string = state.url;
+    const url: string = state.url;
     return this.checkLogin(url);
-    
+
   }
 }
 
 const routes: Routes = [{
-  path: "",
+  path: '',
   component: LoginComponent,
   canActivate: [ CanActivateViaAuthGuard ]
 },
@@ -51,10 +48,16 @@ const routes: Routes = [{
   component: MovieDashboardComponent,
   canActivate: [ CanActivateViaAuthGuard ]
 },
+{
+  path:'movie-details',
+  loadChildren: () => import('./movie-details/movie-details.module').then(m => m.MovieDetailsModule)
+},
 { path: '**', component: PageNotFoundComponent }];
 
+
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true}), LoginModule, DashboardModule],
+  imports: [RouterModule.forRoot(routes, {useHash: true, enableTracing: true}), LoginModule, DashboardModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

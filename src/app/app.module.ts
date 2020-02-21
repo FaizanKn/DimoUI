@@ -5,6 +5,7 @@ import { AppRoutingModule, CanActivateViaAuthGuard } from './app-routing.module'
 import { AppComponent } from './app.component';
 
 import { AlertModule } from "./shared/alert/alert.module";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { AlertModule } from "./shared/alert/alert.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AlertModule
+    AlertModule,
+    HttpClientModule
   ],
   providers: [ CanActivateViaAuthGuard ],
   bootstrap: [AppComponent]
