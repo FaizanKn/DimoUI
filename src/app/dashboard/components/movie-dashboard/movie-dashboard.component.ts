@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../services/dashboard.service';
 import { UserService } from 'src/app/login/services/user.service';
+import { MovieDetailService } from 'src/app/movie-details/movie-details/movie-detail.service';
+import { Routes, Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-dashboard',
@@ -9,7 +11,7 @@ import { UserService } from 'src/app/login/services/user.service';
 })
 export class MovieDashboardComponent implements OnInit {
   public movieList={};
-  constructor(private dashboardService: DashboardService, private userService: UserService) { }
+  constructor(private router: Router,private dashboardService: DashboardService, private userService: UserService, private movieDetailService: MovieDetailService) { }
 
   ngOnInit(): void {
     const email = this.userService.getEmailAddress();
@@ -21,6 +23,12 @@ export class MovieDashboardComponent implements OnInit {
       console.log(error);
 
     });
+  }
+
+  redirectToMovieList(movie: any){
+      console.log(movie.movieId);
+      this.movieDetailService.movieId.next(movie.movieId);
+      this.router.navigateByUrl("/movie-details");
   }
 
   public getObjectKeys(object :any) {
