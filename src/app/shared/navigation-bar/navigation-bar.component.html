@@ -8,10 +8,10 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <form class="form-inline ml-5">
-        <input class="form-control mr-3" type="search" placeholder="Search" aria-label="Search">
-        <input type="button" class="btn btn-outline-success mr-4" value="Search"/>
+        <input class="form-control mr-3 mt-3" type="search" placeholder="Search" aria-label="Search" disabled>
+        <input type="button" class="btn btn-outline-success mr-4 mt-3" value="Search"/>
       </form>
-      <div class="text-light ml-auto">
+      <div class="text-light ml-auto pull-right">
           <span class="mr-5">Hello {{ userName }}</span>
           <button  (click)="logout()" class="btn btn-danger" type="submit">Logout</button>
       </div>

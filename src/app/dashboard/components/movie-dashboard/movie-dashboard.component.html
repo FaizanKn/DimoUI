@@ -1,16 +1,28 @@
 <app-navigation-bar></app-navigation-bar>
 <div class="overlay">
-   
-   
-   
+
+
+
     <div class="mt-5" *ngFor="let movieCategory of getObjectKeys(movieList)">
         <h3 class="ml-5 text-danger">{{movieCategory}} Movies</h3>
         <div class="row p-5">
-            <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12" *ngFor="let movie of movieList[movieCategory]">
+            <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12 mt-5 mb-5" *ngFor="let movie of movieList[movieCategory]">
                 <div class="movie-card" (click)="redirectToMovieList(movie)">
                     <img [src]="movie.posterUrl" alt="" width="100%" height="100%">
+                        <div class="row text-white mt-5">
+                            <div class="col-9">{{ movie.title }}</div>
+                            <div class="col-3">{{ movie.releaseDate.slice(0,4) }}</div>
+                        </div>
+                        <div class="row text-white mt-2">
+                            <div class="col-9">{{ movie.vote_average}}<i class="fa fa-star text-danger pl-2" aria-hidden="true"></i></div>
+                            <div class="col-3">
+                                <div class="badge badge-pill badge-primary">
+                                    {{ movie.runtime}} mins
+                                </div>
+                             </div>
+                        </div>
+
                 </div>
-                <div class="mt-2 mb-2 text-light text-center">{{ movie.title }}</div>
             </div>
         </div>
     </div>
