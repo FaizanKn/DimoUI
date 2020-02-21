@@ -3,23 +3,24 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieDetailsComponent } from './movie-details.component';
 
-import { of, BehaviorSubject,Observable } from 'rxjs';
+import { of, BehaviorSubject, Observable } from 'rxjs';
 import { MovieDetailsRoutingModule } from '../movie-details-routing.module';
+import { RouterTestingModule } from '@angular/router/testing';
 export class MockMovieDetailService {
-  public movieId: BehaviorSubject<string>= new BehaviorSubject('');
+  public movieId: BehaviorSubject<string> = new BehaviorSubject('');
 
-  public getMovieId(): Observable<string>{
-    return of('')
+  public getMovieId(): Observable<string> {
+    return of('1');
   }
 
   public getMovieThumbNailByAPI(movieName: any): Observable<any> {
-    return of(true);
+    return of({});
   }
 
   public getMovieById(movieId: any): Observable<any> {
-    return of({statusCode: true});
+    return of([]);
   }
- 
+
 }
 
 
@@ -30,9 +31,9 @@ describe('MovieDetailsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MovieDetailsComponent ],
-      imports: [MovieDetailsRoutingModule],
+      imports: [MovieDetailsRoutingModule, RouterTestingModule],
       providers: [{provide: MovieDetailService, useClass: MockMovieDetailService}]
-    }).overrideTemplate(MovieDetailsComponent, "<div></div>")
+    }).overrideTemplate(MovieDetailsComponent, '<div></div>')
     .compileComponents();
   }));
 
@@ -43,9 +44,15 @@ describe('MovieDetailsComponent', () => {
     movieDetailService = TestBed.get(MovieDetailService);
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('get id from movieService', () => {
+     spyOn(movieDetailService, 'getMovieId');
+     expect('1').toBe('1');
+  });
+
 
 
 

@@ -6,9 +6,9 @@
       </div>
     </div>
   </div> -->
-  <div class="card-group">
+  <div class="card-group" *ngIf = "movie !== undefined">
   <div class="card">
-    <img class="card-img-top" [src]="thumbNail" alt="Card image cap">
+    <img class="card-img-top" [src]="movie.posterUrl" alt="Card image cap">
     <div class="card-body">
       <div class="movie-title">
             <a [attr.href]="movie.homepage"  target="_blank">{{movie.originalTitle}}</a> 
@@ -57,7 +57,7 @@
 <section class="movie" *ngIf = "movie !== undefined" >
 
     <div class="movie-container">
-      <a href="javascript: void(0)"><img [src]="thumbNail" alt="cover" class="movie-cover" /></a>
+      <a href="javascript: void(0)"><img [src]="movie.posterUrl" alt="cover" class="movie-cover" /></a>
       <div class="movie-hero">
         <div class="movie-details">
           <div class="movie-title">

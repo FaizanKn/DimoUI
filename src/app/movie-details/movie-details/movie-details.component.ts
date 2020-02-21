@@ -22,10 +22,10 @@ export class MovieDetailsComponent implements OnInit {
     });
   }
 
-  public getMovieThumbNailsByMovie(movieName: string = '3 Idiots') {
+  public getMovieThumbNailsByMovie(movieName: string) {
     this.movieDetailService.getMovieThumbNailByAPI(movieName).subscribe((resp: any) => {
       const movieResultsByName = resp.results as Array<any>;
-      if (movieResultsByName.length > 0) {
+      if (movieResultsByName && movieResultsByName.length > 0) {
         const movie = movieResultsByName.filter((mov) => {
           return mov.original_title === movieName;
         });
@@ -34,13 +34,13 @@ export class MovieDetailsComponent implements OnInit {
     });
   }
 
-  public getMovieById(movieId: string = '99861') {
+  public getMovieById(movieId: string) {
     this.movieDetailService.getMovieById(movieId).subscribe((response) => {
       this.movie = response;
-      console.log(this.movie);
-      if (this.movie) {
-        this.getMovieThumbNailsByMovie(this.movie.originalTitle);
-      }
+      // console.log(this.movie);
+      // if (this.movie) {
+      //   this.getMovieThumbNailsByMovie(this.movie.originalTitle);
+      // }
     });
   }
 
