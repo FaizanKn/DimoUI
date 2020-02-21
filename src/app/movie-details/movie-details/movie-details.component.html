@@ -1,0 +1,92 @@
+<app-navigation-bar></app-navigation-bar>
+<div class="spinner-border text-light loader" role="status" *ngIf="showLoader">
+  <span class="sr-only">Loading...</span>
+</div>
+<div class="d-sm-block d-md-none d-lg-none d-xl-none">
+  <div class="card-group" *ngIf = "movie !== undefined">
+  <div class="card">
+    <img class="card-img-top" [src]="movie.posterUrl" alt="Card image cap">
+    <div class="card-body">
+      <div class="movie-title">
+            <a [attr.href]="movie.homepage"  target="_blank">{{movie.originalTitle}}</a> 
+            <label class="tagline"> &nbsp;({{movie.tagline}})</label>
+           <div class="movie-genres">
+            <ul>
+             <li>Production </li>
+              <li *ngFor="let production of movie.production_companies">
+                   {{production.name}}
+              </li>
+            </ul>
+            <ul>
+              <li>Release Date: </li>
+               <li>
+                    {{movie.releaseDate}}
+               </li>
+             </ul>
+          </div>
+          </div>
+
+          <div class="movie-descript">
+            <div class="column1">
+              <span class="movie-tag" *ngFor="let genre of movie.genres">  {{genre.name}} </span>
+            </div>
+          </div>
+          
+
+      <p class="movie column2">
+        {{movie.overview}}
+      </p>
+    
+    </div>
+    <div class="card-footer">
+     
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+<div class="d-sm-none d-none d-md-block d-lg-block d-xl-block">
+<section class="movie" *ngIf = "movie !== undefined" >
+
+    <div class="movie-container">
+      <a href="javascript: void(0)"><img [src]="movie.posterUrl" alt="cover" class="movie-cover" /></a>
+      <div class="movie-hero">
+        <div class="movie-details">
+          <div class="movie-title">
+            <a [attr.href]="movie.homepage"  target="_blank">{{movie.originalTitle}}</a> 
+          </div>
+          <span class="tagline">{{movie.tagline}}</span>
+          <div class="movie-genres">
+            <ul>
+             <li>Production </li>
+              <li *ngFor="let production of movie.production_companies">
+                   {{production.name}}
+              </li>
+            </ul>
+            <ul>
+              <li>Release Date: </li>
+               <li>
+                    {{movie.releaseDate}}
+               </li>
+             </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="movie-descript">
+        <div class="column1">
+          <span class="movie-tag" *ngFor="let genre of movie.genres">  {{genre.name}} </span>
+    
+        </div>
+        <div class="column2" >
+          <p>{{movie.overview}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
