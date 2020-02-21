@@ -15,17 +15,17 @@ export class MovieDetailsComponent implements OnInit {
   public thumbNail = `https://image.tmdb.org/t/p/w400`;
   public showLoader: boolean;
   public movie: any;
-  constructor(private movieDetailService: MovieDetailService,public wallpaperService: WallpaperService, private router: Router) { }
+  constructor(private movieDetailService: MovieDetailService, public wallpaperService: WallpaperService, private router: Router) { }
 
   ngOnInit(): void {
     this.movieDetailService.getMovieId().subscribe((id) => {
-      if(id){
-        localStorage.setItem('movieId',id);
-      this.getMovieById(id);
+      if (id) {
+        localStorage.setItem('movieId', id);
+        this.getMovieById(id);
       } else {
         this.router.navigate(['/dashboard']);
       }
-      
+
     });
   }
 
@@ -42,18 +42,18 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   public getMovieById(movieId: string) {
-    this.showLoader = true;
+    // this.showLoader = true;
     this.movieDetailService.getMovieById(movieId).subscribe((response) => {
-      this.showLoader = false;
+      // this.showLoader = false;
       this.movie = response;
       // console.log(this.movie);
       // if (this.movie) {
       //   this.getMovieThumbNailsByMovie(this.movie.originalTitle);
       // }
     },
-    err => {
-      this.showLoader = false;
-    });
+      err => {
+        this.showLoader = false;
+      });
   }
 
 
