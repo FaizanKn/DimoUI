@@ -16,9 +16,11 @@ body{
     color:red;
 }
 .movie-card{
- height: 400px;
+ height: 430px;
  border: 1px solid white;
- padding: 10px;
+ padding: 1.5rem;
+ cursor: pointer;
+
 }
 .movie-card:hover{
     transform: scale(1.1,1.1);
