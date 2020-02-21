@@ -13,6 +13,7 @@ import { WallpaperService } from 'src/app/login/services/wallpaper.service';
 export class MovieDetailsComponent implements OnInit {
 
   public thumbNail = `https://image.tmdb.org/t/p/w400`;
+  public showLoader: boolean;
   public movie: any;
   constructor(private movieDetailService: MovieDetailService,public wallpaperService: WallpaperService, private router: Router) { }
 
@@ -41,12 +42,17 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   public getMovieById(movieId: string) {
+    this.showLoader = true;
     this.movieDetailService.getMovieById(movieId).subscribe((response) => {
+      this.showLoader = false;
       this.movie = response;
       // console.log(this.movie);
       // if (this.movie) {
       //   this.getMovieThumbNailsByMovie(this.movie.originalTitle);
       // }
+    },
+    err => {
+      this.showLoader = false;
     });
   }
 
