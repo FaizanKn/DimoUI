@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/components/dashboard.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { UserService } from './login/services/user.service';
 import { MovieDashboardComponent } from './dashboard/components/movie-dashboard/movie-dashboard.component';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 @Injectable()
 export class CanActivateViaAuthGuard implements CanActivate {
@@ -50,7 +51,8 @@ const routes: Routes = [{
   path:"dashboard",
   component: MovieDashboardComponent,
   canActivate: [ CanActivateViaAuthGuard ]
-}];
+},
+{ path: '**', component: PageNotFoundComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true}), LoginModule, DashboardModule],
