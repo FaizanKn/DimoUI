@@ -19,6 +19,9 @@ export class MockUserService {
   }
   public loginSuccess(email: string, name: string){
 }
+  public getEmailAddress(){
+    return "email";
+  }
 
 }
 
